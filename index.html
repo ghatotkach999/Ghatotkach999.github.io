@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Code Collection</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#0f1117;
+color:white;
+padding:40px;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(450px,1fr));
+gap:25px;
+}
+
+.card{
+background:#181c25;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 15px rgba(0,0,0,.4);
+}
+
+.header{
+background:#232938;
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h2{
+font-size:20px;
+}
+
+button{
+background:#4cafef;
+border:none;
+color:white;
+padding:8px 18px;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#3298e6;
+}
+
+pre{
+padding:20px;
+overflow:auto;
+font-size:14px;
+line-height:1.6;
+background:#11151d;
+color:#7fffd4;
+}
+
+::-webkit-scrollbar{
+width:8px;
+height:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#555;
+border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>💻 My Programming Codes</h1>
+
+<div class="container">
+
+<!-- Code 1 -->
+<div class="card">
+<div class="header">
+<h2>maximum and minimum</h2>
+<button onclick="copyCode('code1')">Copy</button>
+</div>
+<pre id="code1">
+<pre id="code1">
+n=int(input("enter the number of elements:"))
+if n&lt;=0:
+    print("please enter a positive number of elements")
+else:
+    A=[]
+    print("enter",n,"numbers:")
+    for i in range(n):
+        num=int(input())
+        A.append(num)
+
+    maximum=A[0]
+    minimum=A[0]
+
+    for i in range(1,n):
+        if A[i]&gt;maximum:
+            maximum=A[i]
+        if A[i]&lt;minimum:
+            minimum=A[i]
+
+    print("maximum number is:",maximum)
+    print("minimum number is:",minimum)
+</pre>
+</pre>
+</div>
+
+<!-- Code 2 -->
+<div class="card">
+<div class="header">
+<h2>average of numbers</h2>
+<button onclick="copyCode('code2')">Copy</button>
+</div>
+<pre id="code2">
+n=int(input("enter the number of elements:"))
+if n<=0:
+    print("please enter a positive number of elements")
+else:
+    arr=[]
+    sum=0
+
+    print("enter",n,"number:")
+    for i in range(n):
+        num=int(input())
+        arr.append(num)
+        sum=sum+num
+
+    average=sum/n
+    print("average of number is:",average)
+</pre>
+</div>
+
+<!-- Code 3 -->
+<div class="card">
+<div class="header">
+<h2>addition of two matrix</h2>
+<button onclick="copyCode('code3')">Copy</button>
+</div>
+<pre id="code3">
+m=int(input("enter number of rows(m):"))
+n=int(input("enter number of columns(n):"))
+
+if m<=0 or n<=0:
+    print("please enter positive values for rows and columns")
+else:
+    matrix1=[]
+    matrix2=[]
+    result=[]
+
+    print("enter elements of first matrix:")
+
+    for i in range(m):
+        row=[]
+        for j in range(n):
+            element=int(input())
+            row.append(element)
+        matrix1.append(row)
+
+    print("enter elements of second matrix:")
+
+    for i in range(m):
+        row=[]
+        for j in range(n):
+            element=int(input())
+            row.append(element)
+        matrix2.append(row)
+
+    for i in range(m):
+        row=[]
+        for j in range(n):
+            row.append(matrix1[i][j]+matrix2[i][j])
+        result.append(row)
+
+    print("addition of two matrices is:")
+
+    for i in range(m):
+        for j in range(n):
+            print(result[i][j], end=" ")
+        print()
+
+</pre>
+</div>
+
+<!-- Code 4 -->
+<div class="card">
+<div class="header">
+<h2>transpose of matrix</h2>
+<button onclick="copyCode('code4')">Copy</button>
+</div>
+<pre id="code4">
+m=int(input("enter number of rows(m):"))
+n=int(input("enter number of columns(n):"))
+
+if m<=0 or n<=0:
+    print("please enter positive values for rows and columns")
+else:
+    matrix=[]
+
+    print("enter matrix elements:")
+
+    for i in range(m):
+        row=[]
+        for j in range(n):
+            element=int(input())
+            row.append(element)
+        matrix.append(row)
+
+    print("original matrix:")
+
+    for i in range(m):
+        for j in range(n):
+            print(matrix[i][j], end=" ")
+        print()
+
+    print("transpose of matrix:")
+
+    for j in range(n):
+        for i in range(m):
+            print(matrix[i][j], end=" ")
+        print()
+
+</pre>
+</div>
+
+<!-- Code 5 -->
+<div class="card">
+<div class="header">
+<h2>push,pop,display,quit</h2>
+<button onclick="copyCode('code5')">Copy</button>
+</div>
+<pre id="code5">
+maxsize=int(input("enter max size:"))
+
+if maxsize<=0:
+    print("please enter a positive value")
+else:
+    Stack=[]
+
+    def Push():
+        if len(Stack)>=maxsize:
+            print("stack overflow")
+        else:
+            x=int(input("enter element:"))
+            Stack.append(x)
+            print("element inserted")
+
+    def Pop():
+        if len(Stack)==0:
+            print("stack underflow")
+        else:
+            x=Stack.pop()
+            print("element popped is",x)
+
+    def Peek():
+        if len(Stack)==0:
+            print("empty stack")
+        else:
+            print("top element is",Stack[-1])
+
+    def Display():
+        if len(Stack)==0:
+            print("empty stack")
+        else:
+            print("stack elements are:")
+            for i in range(len(Stack)-1,-1,-1):
+                print(Stack[i])
+
+    while True:
+        print("\n--- Stack Menu ---")
+        print("1. Push")
+        print("2. Pop")
+        print("3. Peek")
+        print("4. Display")
+        print("5. Quit")
+
+        ch=int(input("enter choice:"))
+
+        if ch==1:
+            Push()
+        elif ch==2:
+            Pop()
+        elif ch==3:
+            Peek()
+        elif ch==4:
+            Display()
+        elif ch==5:
+            print("program exited")
+            break
+        else:
+            print("invalid choice")
+
+</pre>
+</div>
+
+<!-- Code 6 -->
+<div class="card">
+<div class="header">
+<h2>factorial of given number</h2>
+<button onclick="copyCode('code6')">Copy</button>
+</div>
+<pre id="code6">
+def factorial(n):
+    if n==1 or n==0:
+        return 1
+    else:
+        return n*factorial(n-1)
+
+num=int(input("enter a number:"))
+
+if num<0:
+    print("enter valid number")
+else:
+    print("factorial:",factorial(num))
+</pre>
+</div>
+
+<!-- Code 7 -->
+<div class="card">
+<div class="header">
+<h2>fibonnaci series</h2>
+<button onclick="copyCode('code7')">Copy</button>
+</div>
+<pre id="code7">
+def fibonacci(n):
+    if n<=1:
+        return n
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+
+n=int(input("enter number of terms:"))
+
+if n<0:
+    print("enter positive number")
+elif n==0:
+    print("enter greater number than zero")
+else:
+    print("fibonacci series:")
+    for i in range(n):
+        print(fibonacci(i), end=" ")
+
+</pre>
+</div>
+
+<!-- Code 8 -->
+<div class="card">
+<div class="header">
+<h2>linear queue</h2>
+<button onclick="copyCode('code8')">Copy</button>
+</div>
+<pre id="code8">
+maxsize=int(input("enter queue size:"))
+
+if maxsize<=0:
+    print("invalid queue size")
+else:
+    q=[0]*maxsize
+    f=0
+    r=0
+
+    def insert():
+        global r
+        if r==maxsize:
+            print("queue full")
+        else:
+            x=int(input("enter element:"))
+            q[r]=x
+            r=r+1
+
+    def delete():
+        global f
+        if f==r:
+            print("queue empty")
+        else:
+            print("deleted element =",q[f])
+            f=f+1
+
+    def display():
+        if f==r:
+            print("queue empty")
+        else:
+            print("queue elements are:")
+            for i in range(f,r):
+                print(q[i],end=" ")
+            print()
+
+    while True:
+        print("\n1. Insert")
+        print("2. Delete")
+        print("3. Display")
+        print("4. Quit")
+
+        ch=int(input("enter choice:"))
+
+        if ch==1:
+            insert()
+        elif ch==2:
+            delete()
+        elif ch==3:
+            display()
+        elif ch==4:
+            print("program exited")
+            break
+        else:
+            print("invalid choice")
+
+</pre>
+</div>
+
+<!-- Code 9 -->
+<div class="card">
+<div class="header">
+<h2>circular queue</h2>
+<button onclick="copyCode('code9')">Copy</button>
+</div>
+<pre id="code9">
+maxsize=int(input("enter queue size:"))
+
+if maxsize<=0:
+    print("invalid queue size")
+else:
+    q=[0]*maxsize
+    f=-1
+    r=-1
+
+    def insert():
+        global f,r
+        if (r+1)%maxsize==f:
+            print("queue full")
+        else:
+            x=int(input("enter element:"))
+            if f==-1:
+                f=0
+                r=0
+            else:
+                r=(r+1)%maxsize
+            q[r]=x
+
+    def delete():
+        global f,r
+        if f==-1:
+            print("queue empty")
+        else:
+            print("deleted element =",q[f])
+            if f==r:
+                f=-1
+                r=-1
+            else:
+                f=(f+1)%maxsize
+
+    def display():
+        if f==-1:
+            print("queue empty")
+        else:
+            print("queue elements are:")
+            i=f
+            while True:
+                print(q[i],end=" ")
+                if i==r:
+                    break
+                i=(i+1)%maxsize
+            print()
+
+    while True:
+        print("\n1. Insert")
+        print("2. Delete")
+        print("3. Display")
+        print("4. Quit")
+
+        ch=int(input("enter choice:"))
+
+        if ch==1:
+            insert()
+        elif ch==2:
+            delete()
+        elif ch==3:
+            display()
+        elif ch==4:
+            print("program exited")
+            break
+        else:
+            print("invalid choice")
+
+</pre>
+</div>
+
+<!-- Code 10 -->
+<div class="card">
+<div class="header">
+<h2>Linked list prepend </h2>
+<button onclick="copyCode('code10')">Copy</button>
+</div>
+<pre id="code10">
+class linkedlist:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+
+head=None
+
+def prepend(element):
+    global head
+
+    newnode=linkedlist(element)
+
+    if head==None:
+        head=newnode
+    else:
+        newnode.next=head
+        head=newnode
+
+def del1():
+    global head
+
+    if head==None:
+        print("List Empty")
+    else:
+        temp=head
+        head=temp.next
+        temp.next=None
+        print("First Node Deleted")
+
+def display():
+    global head
+
+    if head==None:
+        print("List Empty")
+    else:
+        temp=head
+        while temp.next!=None:
+            print(temp.data,end=" -> ")
+            temp=temp.next
+        print(temp.data)
+
+while True:
+    print("\n1.Prepend")
+    print("2.Deletion of First Node")
+    print("3.Display")
+    print("4.Quit")
+
+    ch=int(input("Enter Choice : "))
+
+    if ch==1:
+        element=int(input("Enter element : "))
+        prepend(element)
+
+    elif ch==2:
+        del1()
+
+    elif ch==3:
+        display()
+
+    elif ch==4:
+        break
+
+    else:
+        print("Invalid Choice")
+</pre>
+</div>
+
+<!-- Code 11 -->
+<div class="card">
+    <div class="header">
+        <h2>doubly linked list</h2>
+        <button onclick="copyCode('code11')">Copy</button>
+    </div>
+
+    <pre id="code11">class doubly:
+    def __init__(self, value):
+        self.data = value
+        self.next = None
+        self.prev = None
+
+
+head = None
+
+
+def insert():
+    global head
+
+    value = int(input("Enter Value : "))
+    newnode = doubly(value)
+
+    if head == None:
+        head = newnode
+    else:
+        temp = head
+
+        while temp.next != None:
+            temp = temp.next
+
+        temp.next = newnode
+        newnode.prev = temp
+
+    print("Node Inserted")
+
+
+def delete():
+    global head
+
+    if head == None:
+        print("List Underflow")
+    else:
+        temp = head
+        head = head.next
+
+        if head != None:
+            head.prev = None
+
+        temp.next = None
+
+        print("First Node Deleted")
+
+
+def display():
+    global head
+
+    temp = head
+
+    if temp == None:
+        print("List Empty")
+    else:
+        while temp.next != None:
+            print(temp.data, end=" &lt;-&gt; ")
+            temp = temp.next
+
+        print(temp.data)
+
+
+def displayR():
+    global head
+
+    temp = head
+
+    if temp == None:
+        print("List Empty")
+    else:
+        while temp.next != None:
+            temp = temp.next
+
+        while temp.prev != None:
+            print(temp.data, end=" &lt;-&gt; ")
+            temp = temp.prev
+
+        print(temp.data)
+
+
+def search():
+    global head
+
+    if head == None:
+        print("List Empty")
+        return
+
+    value = int(input("Enter Value to Search : "))
+
+    temp = head
+    pos = 1
+
+    while temp != None:
+        if temp.data == value:
+            print("Element Found at Position", pos)
+            return
+
+        temp = temp.next
+        pos += 1
+
+    print("Element Not Found")
+
+
+while True:
+    print("\n1.Insert")
+    print("2.Delete")
+    print("3.Display")
+    print("4.Display Reverse")
+    print("5.Search")
+    print("6.Quit")
+
+    ch = int(input("Enter Choice : "))
+
+    if ch == 1:
+        insert()
+
+    elif ch == 2:
+        delete()
+
+    elif ch == 3:
+        display()
+
+    elif ch == 4:
+        displayR()
+
+    elif ch == 5:
+        search()
+
+    elif ch == 6:
+        print("Program Terminated")
+        break
+
+    else:
+        print("Invalid Choice")</pre>
+</div>
+<!-- Code 12 -->
+<div class="card">
+    <div class="header">
+        <h2>stack linked list</h2>
+        <button onclick="copyCode('code12')">Copy</button>
+    </div>
+
+    <pre id="code12">class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class Stack:
+    def __init__(self):
+        self.top = None
+
+    def push(self, data):
+        new_node = Node(data)
+        new_node.next = self.top
+        self.top = new_node
+        print(data, "pushed into stack")
+
+    def pop(self):
+        if self.top is None:
+            print("Stack Underflow")
+            return
+
+        temp = self.top
+        self.top = self.top.next
+        print("Popped element:", temp.data)
+
+    def peek(self):
+        if self.top is None:
+            print("Stack is empty")
+        else:
+            print("Top element:", self.top.data)
+
+    def display(self):
+        if self.top is None:
+            print("Stack is empty")
+            return
+
+        temp = self.top
+        print("Stack elements:")
+
+        while temp:
+            print(temp.data, end=" ")
+            temp = temp.next
+
+        print()
+
+
+stack = Stack()
+
+while True:
+    print("\n1. Push")
+    print("2. Pop")
+    print("3. Peek")
+    print("4. Display")
+    print("5. Quit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        data = int(input("Enter element: "))
+        stack.push(data)
+
+    elif choice == 2:
+        stack.pop()
+
+    elif choice == 3:
+        stack.peek()
+
+    elif choice == 4:
+        stack.display()
+
+    elif choice == 5:
+        print("Program terminated.")
+        break
+
+    else:
+        print("Invalid choice")</pre>
+</div>
+<script>
+function copyCode(id) {
+    const codeElement = document.getElementById(id);
+    const code = codeElement.textContent;
+
+    navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied!");
+    }).catch(() => {
+        const textarea = document.createElement("textarea");
+        textarea.value = code;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("Code copied!");
+    });
+}
+</script>
+
+</body>
+</html>
