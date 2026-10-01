@@ -100,7 +100,6 @@ border-radius:20px;
 <button onclick="copyCode('code1')">Copy</button>
 </div>
 <pre id="code1">
-<pre id="code1">
 n=int(input("enter the number of elements:"))
 if n&lt;=0:
     print("please enter a positive number of elements")
@@ -122,7 +121,6 @@ else:
 
     print("maximum number is:",maximum)
     print("minimum number is:",minimum)
-</pre>
 </pre>
 </div>
 
@@ -591,9 +589,7 @@ while True:
         self.next = None
         self.prev = None
 
-
 head = None
-
 
 def insert():
     global head
@@ -614,7 +610,6 @@ def insert():
 
     print("Node Inserted")
 
-
 def delete():
     global head
 
@@ -631,7 +626,6 @@ def delete():
 
         print("First Node Deleted")
 
-
 def display():
     global head
 
@@ -645,7 +639,6 @@ def display():
             temp = temp.next
 
         print(temp.data)
-
 
 def displayR():
     global head
@@ -663,7 +656,6 @@ def displayR():
             temp = temp.prev
 
         print(temp.data)
-
 
 def search():
     global head
@@ -686,7 +678,6 @@ def search():
         pos += 1
 
     print("Element Not Found")
-
 
 while True:
     print("\n1.Insert")
@@ -720,6 +711,7 @@ while True:
     else:
         print("Invalid Choice")</pre>
 </div>
+
 <!-- Code 12 -->
 <div class="card">
     <div class="header">
@@ -731,7 +723,6 @@ while True:
     def __init__(self, data):
         self.data = data
         self.next = None
-
 
 class Stack:
     def __init__(self):
@@ -772,7 +763,6 @@ class Stack:
 
         print()
 
-
 stack = Stack()
 
 while True:
@@ -804,6 +794,222 @@ while True:
     else:
         print("Invalid choice")</pre>
 </div>
+
+<!-- Code 13 -->
+<div class="card">
+    <div class="header">
+        <h2>graph adjacency matrix</h2>
+        <button onclick="copyCode('code13')">Copy</button>
+    </div>
+
+    <pre id="code13">graph_type = input("Enter graph type (D for Directed, U for Undirected): ").upper()
+
+if graph_type not in ("U", "D"):
+    print("Invalid graph type")
+    exit()
+else:
+    print(f"valid graph type entered : {graph_type}")
+
+vertices = int(input("Enter number of vertices: "))
+
+if vertices &lt;= 0:
+    print("Please enter a positive number.")
+    exit()
+
+edges = int(input("Enter number of edges: "))
+
+if edges &lt; 0:
+    print("Please enter a positive number.")
+    exit()
+
+matrix = []
+
+for i in range(vertices):
+    row = []
+    for j in range(vertices):
+        row.append(0)
+    matrix.append(row)
+
+print("\nEnter edges (Example: 1 5)")
+
+for i in range(edges):
+    u, v = map(int, input(f"Edge {i+1}: ").split())
+
+    if u &lt;= 0 or v &lt;= 0:
+        print("Please enter a positive number.")
+        exit()
+
+    if u &gt; vertices or v &gt; vertices:
+        print("Invalid vertex number.")
+        exit()
+
+    u -= 1
+    v -= 1
+
+    matrix[u][v] += 1
+
+    if graph_type == "U":
+        matrix[v][u] += 1
+
+print("\nAdjacency Matrix:")
+
+for row in matrix:
+    for value in row:
+        print(value, end=" ")
+    print()</pre>
+</div>
+
+<!-- Code 14 -->
+<div class="card">
+    <div class="header">
+        <h2>binary search tree</h2>
+        <button onclick="copyCode('code14')">Copy</button>
+    </div>
+
+    <pre id="code14">class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, data):
+        if self.root is None:
+            self.root = Node(data)
+            print(f"{data} inserted as root.")
+        else:
+            self._insert(self.root, data)
+
+    def _insert(self, current, data):
+        if data == current.data:
+            print(f"Data {data} already exists. Duplicate not allowed!!")
+            return
+
+        elif data &lt; current.data:
+            if current.left is None:
+                current.left = Node(data)
+                print(f"{data} inserted on the left of {current.data}.")
+            else:
+                self._insert(current.left, data)
+
+        else:
+            if current.right is None:
+                current.right = Node(data)
+                print(f"{data} inserted on the right of {current.data}.")
+            else:
+                self._insert(current.right, data)
+
+    def search(self, data):
+        return self._search(self.root, data, None)
+
+    def _search(self, current, data, parent):
+        if current is None:
+            return None
+
+        if current.data == data:
+            if parent is None:
+                return f"{data} found at root."
+            elif parent.left == current:
+                return f"{data} found left of {parent.data}."
+            else:
+                return f"{data} found right of {parent.data}."
+
+        elif data &lt; current.data:
+            return self._search(current.left, data, current)
+
+        else:
+            return self._search(current.right, data, current)
+
+    def inorder(self, node):
+        if node:
+            self.inorder(node.left)
+            print(node.data, end=" ")
+            self.inorder(node.right)
+
+    def preorder(self, node):
+        if node:
+            print(node.data, end=" ")
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def postorder(self, node):
+        if node:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print(node.data, end=" ")
+
+
+def menu():
+    bst = BST()
+
+    while True:
+        print("\n======== Binary Search Tree Menu ========")
+        print("1. Insert")
+        print("2. Search")
+        print("3. Traverse")
+        print("4. Quit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            try:
+                data = int(input("Enter value to insert: "))
+                bst.insert(data)
+            except ValueError:
+                print("Invalid input. Please enter an integer.")
+
+        elif choice == "2":
+            if bst.root is None:
+                print("The tree is empty. Insert values first!")
+                continue
+
+            try:
+                data = int(input("Enter value to search: "))
+                result = bst.search(data)
+
+                if result:
+                    print(result)
+                else:
+                    print(f"{data} not found in the BST.")
+
+            except ValueError:
+                print("Invalid input. Please enter an integer.")
+
+        elif choice == "3":
+            if bst.root is None:
+                print("The tree is empty. Insert values first!!")
+                continue
+
+            print("\nInorder Traversal: ", end="")
+            bst.inorder(bst.root)
+            print()
+
+            print("Preorder Traversal: ", end="")
+            bst.preorder(bst.root)
+            print()
+
+            print("Postorder Traversal: ", end="")
+            bst.postorder(bst.root)
+            print()
+
+        elif choice == "4":
+            print("Exiting Program!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    menu()</pre>
+</div>
+
+</div>
+
 <script>
 function copyCode(id) {
     const codeElement = document.getElementById(id);
